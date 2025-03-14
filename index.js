@@ -23,14 +23,30 @@ const questions = [
     },
     {
         type:"input",
-        name:"install",
+        name:"installation",
         message:"How should this application be installed?"
     },
     {
         type:"input",
-        name:"install",
-        message:"How should this application be installed?"
+        name:"usage",
+        message:"How is this application used?"
     },
+    {
+        type:"list", choices: ["MIT", "GPL3"],
+        name:"license",
+        message:"What is your license information"
+    },
+    {
+        type:"input",
+        name:"contributing",
+        message:"How are you making contributions?"
+    },
+    {
+        type:"input",
+        name:"testing",
+        message:"How is this application being tested?"
+    },
+
 ];
 
 // TODO: Create a function to write README file
@@ -40,8 +56,7 @@ function writeToFile(fileName, data) {
 
     // Now we need to WRITE the data to file
     // module.method("filename", data to Write, callback(err))
-    fs.writeFile()
-
+    fs.writeFile(fileName, template, ()=>console.log("err"));
 }
 
 // TODO: Create a function to initialize app
@@ -52,7 +67,7 @@ function init() {
             .then(function(answers) {
                 // IF the ASYNC operation is SUCCESSFUL--> Then we do something with the data returned
                 console.log("Results: ", answers)
-                writeToFile("README.md", answers) 
+                writeToFile("./output/README.md", answers) 
             })
             .catch(function(error) {
                 // IF the ASYNC operation returns an ERROR--> Then we handle the ERROR  
